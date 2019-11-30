@@ -5,7 +5,7 @@ require 'date'
 
 url = "https://www.when2meet.com/SaveNewEvent.php"
 
-bot = Discordrb::Commands::CommandBot.new token: ENV.key, prefix: '!'
+bot = Discordrb::Commands::CommandBot.new token: ENV["key"], prefix: '!'
 
 bot.command :schedule do |event, *args|
   eventName = args.join(' ')
