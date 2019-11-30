@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: letsmeet
+  namespace: christopherjmiller
+  labels:
+    app: letsmeet
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: letsmeet
+  template:
+    metadata:
+      labels:
+        app: letsmeet
+    spec:
+      containers:
+        - name: letsmeet
+          image: quay.io/christopherjmiller/letsmeet:1.0
+          env:
+            - name: key
+              valueFrom:
+                secretKeyRef:
+                  name: letsmeet
+                  key: key
