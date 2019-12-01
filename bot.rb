@@ -14,8 +14,8 @@ bot.command :schedule do |event, *args|
   date = Date.today
 
   (1..7).each do |n|
-    dateList << date.strftime("%Y-%m-%d")
     date = date.next_day
+    dateList << date.strftime("%Y-%m-%d")
   end
 
   data = {
@@ -23,7 +23,7 @@ bot.command :schedule do |event, *args|
     DateTypes: 'SpecificDates',
     PossibleDates: dateList.join('|'),
     NoEarlierThan: 9,
-    NoLaterThan: 17,
+    NoLaterThan: 21,
     TimeZone: 'America/New_York'
   }
 
